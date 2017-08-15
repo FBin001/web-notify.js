@@ -1,48 +1,42 @@
 import Permission from './Permission';
 
+function _isFunction(obj) {
+  return obj && {}.toString.call(obj) === '[object Function]';
+}
+
+function _showNotification(title, options) {
+  let notification = new Notification(title, options);
+  if (notification !== null) {
+    if (_isFunction(options.onShow)) {
+      notification.addEventListener('show', options.onShow);
+    }
+    if (_isFunction(options.onError)) {
+      notification.addEventListener('error', options.onError);
+    }
+    if (_isFunction(options.onClick)) {
+      notification.addEventListener('click', options.onClick);
+    }
+    notification.addEventListener('close', () => {
+      if (_isFunction(options.onClose)) {
+        options.onClose.call(this, notification);
+      }
+    });
+  }
+}
+
 export default class WebNotify {
   constructor() {
-    this._permission = new Permission();
+    this.Permission = new Permission();
   }
   create(title, options) {
+    if (typeof title !== 'String') {
+      throw new Error('title must be String');
+    }
     this._title = title;
     this._options = options || {};
-    this.requestPermission();
-    this.showNotification();
-  }
-  requestPermission(onGranted, onDenied) {
-    if (!this._permission.has()) {
-      this._permission.request(onGranted, onDenied);
+    if (!this.Permission.has()) {
+      this.Permission.request();
     }
-  }
-  showNotification() {
-    let notification = null;
-    if (this._permission.has()) {
-      notification = new Notification(this._title, this._options);
-    } else if (this._permission.get() !== "denied") {
-      this.requestPermission();
-    }
-    if (notification !== null) {
-      if (this.isFunction(this._options.onShow)) {
-        notification.addEventListener('show', this._options.onShow);
-      }
-
-      if (this.isFunction(this._options.onError)) {
-        notification.addEventListener('error', this._options.onError);
-      }
-
-      if (this.isFunction(this._options.onClick)) {
-        notification.addEventListener('click', this._options.onClick);
-      }
-
-      notification.addEventListener('close', () => {
-        if (this.isFunction(this._options.onClose)) {
-          this._options.onClose.call(this, notification);
-        }
-      });
-    }
-  }
-  isFunction(obj) {
-    return obj && {}.toString.call(obj) === '[object Function]';
+    _showNotification(this._title, this._options);
   }
 }
