@@ -1,5 +1,5 @@
 {
-  "name": "WebNotify",
+  "name": "web-notify.js",
   "version": "0.1.0",
   "description": "Web Notification",
   "main": "./dist/WebNotify.min.js",
