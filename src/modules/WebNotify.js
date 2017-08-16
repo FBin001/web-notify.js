@@ -29,9 +29,6 @@ export default class WebNotify {
     this.Permission = new Permission();
   }
   create(title, options) {
-    if (typeof title !== 'String') {
-      throw new Error('title must be String');
-    }
     this._title = title;
     this._options = options || {};
     if (!this.Permission.has()) {
