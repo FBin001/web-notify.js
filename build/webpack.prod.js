@@ -7,6 +7,6 @@ module.exports = Merge(CommonConfig, {
     path: path.resolve(__dirname, '../dist'),
     filename: "[name].min.js",
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    library: 'WebNotify'
   },
 });
