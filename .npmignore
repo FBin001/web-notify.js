@@ -1,5 +1,5 @@
-node_modules/
+＃ npmignore
 build/
-node_modules/
+src/
 webpack.config.js
 yarn.lock

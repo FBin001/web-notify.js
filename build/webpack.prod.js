@@ -6,5 +6,7 @@ module.exports = Merge(CommonConfig, {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: "[name].min.js",
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
 });
