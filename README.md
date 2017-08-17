@@ -60,4 +60,4 @@ onError()     | 通知错误回调
 onShow()      | 通知显示回调
 
 ## More API
- <a href=" https://developer.mozilla.org/zh-CN/docs/Web/API/notification/Using_Web_Notifications" target="_blank"> 使用Web Notifications - Web API 接口| MDN
+ Web API 接口 https://developer.mozilla.org/zh-CN/docs/Web/API/notification/Using_Web_Notifications"
