@@ -1,2 +1,2 @@
-import WebNotify from './src/WebNotify'
+import WebNotify from './modules/WebNotify'
 export default new WebNotify();
