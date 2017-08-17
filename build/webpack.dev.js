@@ -6,5 +6,8 @@ module.exports = Merge(CommonConfig, {
   output: {
     path: path.resolve(__dirname, '../dist'),
     filename: "[name].js",
+    //组件需选择umd
+    libraryTarget: 'umd',
+    umdNamedDefine: true
   },
 });
