@@ -2,7 +2,7 @@
 
 ### What is WebNotify? ###
 
-WebNotify是基于H5的Web Notifications API来实现的跨浏览器桌面通知解决方案。Notifications API允许现代浏览器（如Chrome，Safari，Firefox和Opera）将通知推送到用户的桌面，这是官方规范的一个新增功能。
+WebNotify是基于H5的Notifications API来实现的跨浏览器桌面通知解决方案。Notifications API允许现代浏览器（如Chrome，Safari，Firefox和Opera）将通知推送到用户的桌面，这是官方规范的一个新增功能。
 
 ## Install
 #### npm
