@@ -7,7 +7,7 @@ module.exports = Merge(CommonConfig, {
     path: path.resolve(__dirname, '../dist'),
     filename: "[name].js",
     //组件需选择umd
-    libraryTarget: 'umd',
-    umdNamedDefine: true
+    libraryTarget: 'umd',//详细解释 https://doc.webpack-china.org/configuration/output/#output-librarytarget
+    library: 'WebNotify',// https://doc.webpack-china.org/guides/author-libraries/
   },
 });
