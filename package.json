@@ -1,7 +1,7 @@
 {
   "name": "web-notify.js",
-  "version": "0.1.1",
-  "description": "Web Notification",
+  "version": "0.1.2",
+  "description": "Fastest Web Notification",
   "main": "./dist/WebNotify.min.js",
   "scripts": {
     "dev": "webpack --env=dev --progress --profile --colors",
