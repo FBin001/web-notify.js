@@ -21,7 +21,7 @@ yarn add web-notify.js --save-dev
 ## Quick Start
 #### Creating Your First Notification
 ```javascript
-  WebNotify.create('Hello World!')
+WebNotify.create('Hello World!')
 ```
 #### Want more options? Just pass in a options object as the second parameter:
 ``` javascript
@@ -59,5 +59,5 @@ onClose()     | 通知关闭回调
 onError()     | 通知错误回调
 onShow()      | 通知显示回调
 
-## More API
- [Web Notification API](https://developer.mozilla.org/zh-CN/docs/Web/API/notification/Using_Web_Notifications")
+## More
+ [Web Notification API](https://developer.mozilla.org/zh-CN/docs/Web/API/notification/Using_Web_Notifications)
