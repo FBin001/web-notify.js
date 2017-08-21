@@ -113,31 +113,8 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-function _isFunction(obj) {
-  return obj && {}.toString.call(obj) === '[object Function]';
-}
-
-function _showNotification(title, options) {
-  var _this = this;
-
-  var notification = new Notification(title, options);
-  if (notification !== null) {
-    if (_isFunction(options.onShow)) {
-      notification.addEventListener('show', options.onShow);
-    }
-    if (_isFunction(options.onError)) {
-      notification.addEventListener('error', options.onError);
-    }
-    if (_isFunction(options.onClick)) {
-      notification.addEventListener('click', options.onClick);
-    }
-    notification.addEventListener('close', function () {
-      if (_isFunction(options.onClose)) {
-        options.onClose.call(_this, notification);
-      }
-    });
-  }
-}
+var isFunction = Symbol('isFunction');
+var showNotification = Symbol('showNotification');
 
 var WebNotify = function () {
   function WebNotify() {
@@ -154,7 +131,35 @@ var WebNotify = function () {
       if (!this.Permission.has()) {
         this.Permission.request();
       }
-      _showNotification(this._title, this._options);
+      this[showNotification](this._title, this._options);
+    }
+  }, {
+    key: isFunction,
+    value: function value(obj) {
+      return obj && {}.toString.call(obj) === '[object Function]';
+    }
+  }, {
+    key: showNotification,
+    value: function value(title, options) {
+      var _this = this;
+
+      var notification = new Notification(title, options);
+      if (notification !== null) {
+        if (this[isFunction](options.onShow)) {
+          notification.addEventListener('show', options.onShow);
+        }
+        if (this[isFunction](options.onError)) {
+          notification.addEventListener('error', options.onError);
+        }
+        if (this[isFunction](options.onClick)) {
+          notification.addEventListener('click', options.onClick);
+        }
+        notification.addEventListener('close', function () {
+          if (_this[isFunction](options.onClose)) {
+            options.onClose.call(_this, notification);
+          }
+        });
+      }
     }
   }]);
 
